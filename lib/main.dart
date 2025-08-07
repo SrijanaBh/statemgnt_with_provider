@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:statemgnt_with_provider/provider/count_provider.dart';
-import 'package:statemgnt_with_provider/screens/count_example.dart';
+import 'package:setmgnt_multi_provider/provider/multi_provider.dart';
+import 'package:statemgnt_with_provider/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,13 +13,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return MultiProvider[
       create: (_) => CountProvider(),
+      crate:(_)=> MultiOneProvider(),
+    ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Set State without Provider State',
         theme: ThemeData(primarySwatch: Colors.blueGrey),
-        home: const CountExample(),
+        home: const MyHome(),
       ),
     );
   }
